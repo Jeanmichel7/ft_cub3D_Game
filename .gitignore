@@ -1,4 +1,3 @@
 *.swp
 .vscode
-*.o
 objs/*

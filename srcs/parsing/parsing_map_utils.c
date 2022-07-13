@@ -19,7 +19,8 @@ int	ft_is_map_border(char *line)
 	i = 0;
 	//real fct !!!
 	//while (line && line[i] && (line[i] == '1' || line[i] == ' '))
-	while (line && line[i] && (line[i] == '1' || line[i] == ' ' || line[i] == '0'))
+	while (line && line[i] && (line[i] == '1' || line[i] == ' ' \
+	|| line[i] == '0'))
 		i++;
 	if (i == (int)ft_strlen(line))
 		return (1);
@@ -33,7 +34,7 @@ int	ft_map_begin(char *line)
 	i = 0;
 	while (line && line[i])
 	{
-		if ((line[i] == '1' || line[i] == ' ')\
+		if ((line[i] == '1' || line[i] == ' ') \
 		&& line[i + 1] && (line[i + 1] == '1' || line[i + 1] == ' ') \
 		&& line[i + 2] && (line[i + 2] == '1' || line[i + 2] == ' ') \
 		&& ft_is_map_border(line))

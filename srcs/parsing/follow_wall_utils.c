@@ -17,9 +17,6 @@ int	ft_check_out(t_map_data *d)
 	//check en fct lonheur ligne (int)ft_strlen(d->map[posY]) - 1
 	if (d->dir == 'E')
 	{
-		//printf("\n\nlen line : %d\n", (int)ft_strlen(d->map[d->posY - 1]) - 1);
-		//printf("posX : %d\n\n\n", d->posX);
-
 		if (d->posY == 0)
 			return (1);
 		else if (d->posX > (int)ft_strlen(d->map[d->posY]) - 1)
@@ -27,8 +24,6 @@ int	ft_check_out(t_map_data *d)
 	}
 	else if (d->dir == 'S')
 	{
-		//printf("\n\nlen line : %d\n", (int)ft_strlen(d->map[d->posY + 1]) - 1);
-		//printf("posX : %d\n\n\n", d->posX);
 		if (d->posY == d->height - 1)
 			return (1);
 		else if (d->posX > (int)ft_strlen(d->map[d->posY + 1]) - 1)
@@ -38,13 +33,8 @@ int	ft_check_out(t_map_data *d)
 		return (1);
 	else if (d->dir == 'N')
 	{
-		if(d->posY == 0)
+		if (d->posY == 0)
 			return (1);
-		//if (d->posX == (int)ft_strlen(d->map[d->posY - 1]) - 1 && d->map[d->posY - 1][d->posX] != '1')
-		//{
-		//	printf("lui ici\n");
-		//	return (1);
-		//}
 		else if (d->posX > (int)ft_strlen(d->map[d->posY - 1]) - 1)
 			return (1);
 	}
