@@ -66,7 +66,6 @@ int	ft_check_start_following(t_map_data *d)
 
 int	ft_check_map_border(t_map_data *map_data)
 {
-
 	if (ft_check_start_following(map_data))
 	{
 		printf("Only wall...\n");
