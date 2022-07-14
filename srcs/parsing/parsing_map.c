@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   copy_map.c                                         :+:      :+:    :+:   */
+/*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 01:30:17 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/14 00:31:31 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/14 02:35:25 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,24 @@ int	ft_check_map_line(char *line, t_data *data)
 	return (0);
 }
 
-void	ft_sub_copy_map(char **line, t_data *data, t_list *list)
+void	ft_sub_copy_map(char *line, t_data *data, t_list *list)
 {
 	char	*line_temp;
 
-	if (ft_check_map_line(*line, data))
+	if (ft_check_map_line(line, data))
 	{
 		//free
 		exit(0);
 	}
-	if ((int)ft_strlen(*line) > data->map.width)
-		data->map.width = (int)ft_strlen(*line);
+	if ((int)ft_strlen(line) > data->map.width)
+		data->map.width = (int)ft_strlen(line);
 	if (data->map.height != 0)
 	{
-		line_temp = malloc(sizeof(char) * (ft_strlen(*line) + 1));
-		ft_strlcpy(line_temp, *line, (ft_strlen(*line) + 1));
+		line_temp = malloc(sizeof(char) * (ft_strlen(line) + 1));
+		ft_strlcpy(line_temp, line, (ft_strlen(line) + 1));
 		ft_lstadd_back(&list, ft_lstnew(line_temp));
+		free(line);
 	}
-	//free(line);
-	*line = get_next_line(data->fd);
 	data->map.height++;
 }
 
@@ -85,9 +84,12 @@ void	ft_copy_map(char *line, t_data *data)
 	list = ft_lstnew(line);
 	while (line && line[0] != '\0')
 	{
-		ft_sub_copy_map(&line, data, list);
+		ft_sub_copy_map(line, data, list);
+		line = get_next_line(data->fd);
+		//blabla
 	}
 	ft_fill_map(data, list);
+	ft_free_list(list);
 	if (ft_check_map(data))
 	{
 		printf("Map is open\n");

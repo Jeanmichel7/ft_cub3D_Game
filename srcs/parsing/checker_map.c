@@ -84,7 +84,10 @@ int	ft_check_map_border(t_data *data)
 		exit(0);
 	}
 	if (ft_follow_wall(&map_data))
+	{
+		//ft_free_tab(map_data.map);
 		return (1);
+	}
 	return (0);
 }
 

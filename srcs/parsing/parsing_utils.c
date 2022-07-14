@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 23:10:38 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/14 00:32:31 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/14 02:26:56 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_sub_fill_caract(char **caract, char *str)
 {
+	if (*caract != NULL)
+		free(*caract);
 	*caract = malloc(sizeof(char) * (ft_strlen(str) + 1));
 	ft_strlcpy(*caract, str, ft_strlen(str) + 1);
 }

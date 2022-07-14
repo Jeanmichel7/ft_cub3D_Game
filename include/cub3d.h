@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:29:54 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/14 00:39:17 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/14 02:30:28 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ typedef struct s_data
 	char	*texture_E;
 	int		color_floor; 			//color
 	int		color_ceiling;			//color
-	//char	**map;
 	int		fd;
 	void	*display;			// ray casting
 	char	*display_add;		// ray casting
@@ -141,6 +140,7 @@ void	ft_move(t_map_data *d);
 int		ft_free_texture(t_data *data);
 void	ft_free_tab(char **tab);
 void	ft_close_and_free(t_data *data);
+void	ft_free_list(t_list *list);
 
 /* DEBUG */
 void	ft_printdata(t_data *data);

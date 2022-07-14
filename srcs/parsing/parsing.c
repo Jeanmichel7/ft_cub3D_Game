@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:21:13 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/14 00:40:40 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/14 02:11:33 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,19 @@ int	ft_checker_line(char *line, t_data *data)
 		data->is_map_started = 1;
 		ft_copy_map(line, data);
 		ft_free_tab(line_splited);
+		// pas sur
+		//free(line);
 		return (1);
 	}
 	ft_free_tab(line_splited);
 	return (0);
 }
+/*
+void	ft_free_parsing(t_data *data)
+{
 
+}
+*/
 int	ft_parsing(t_data *data)
 {
 	char	*line;
@@ -91,11 +98,13 @@ int	ft_parsing(t_data *data)
 			free(line);
 		line = get_next_line(data->fd);
 	}
+	//free(line);
 	if (ft_check_all_caract(data))
 	{
 		//free
 		exit(0);
 	}
 	close(data->fd);
+	//ft_free_parsing(data);
 	return (0);
 }
