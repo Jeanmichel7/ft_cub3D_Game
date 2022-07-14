@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 01:30:17 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/14 02:35:25 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/14 02:49:25 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_fill_map(t_data *data, t_list *list)
 		(ft_strlen(list->content) + 1));
 		ft_strlcpy(data->map.tab[i], list->content, \
 		ft_strlen(list->content) + 1);
-		//free(list->content);
 		list = list->next;
 		i++;
 	}
@@ -86,8 +85,8 @@ void	ft_copy_map(char *line, t_data *data)
 	{
 		ft_sub_copy_map(line, data, list);
 		line = get_next_line(data->fd);
-		//blabla
 	}
+	free(line);
 	ft_fill_map(data, list);
 	ft_free_list(list);
 	if (ft_check_map(data))

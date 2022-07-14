@@ -55,7 +55,10 @@ int	ft_check_all_caract(t_data *data)
 	if (data->texture_N == NULL || data->texture_S == NULL
 		|| data->texture_W == NULL || data->texture_E == NULL
 		|| data->color_floor == -1 || data->color_ceiling == -1)
-		return (1);
+		{
+			//free();
+			return (1);
+		}
 	return (0);
 }
 
@@ -67,7 +70,10 @@ int	ft_checker_line(char *line, t_data *data)
 		return (0);
 	line_splited = ft_split(line, ' ');
 	if (ft_nb_section_split(line_splited) == 2)
+	{
+		fprintf(stderr, "ici ? \n");
 		ft_fill_caract(data, line_splited, line);
+	}
 	else if (ft_map_begin(line) && data->is_map_started == 0)
 	{
 		data->is_map_started = 1;
@@ -80,12 +86,7 @@ int	ft_checker_line(char *line, t_data *data)
 	ft_free_tab(line_splited);
 	return (0);
 }
-/*
-void	ft_free_parsing(t_data *data)
-{
 
-}
-*/
 int	ft_parsing(t_data *data)
 {
 	char	*line;
