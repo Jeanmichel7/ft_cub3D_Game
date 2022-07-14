@@ -80,14 +80,10 @@ int	ft_check_map_border(t_data *data)
 	if (ft_check_start_following(&map_data))
 	{
 		printf("Only wall...\n");
-		//free();
 		exit(0);
 	}
 	if (ft_follow_wall(&map_data))
-	{
-		//ft_free_tab(map_data.map);
 		return (1);
-	}
 	return (0);
 }
 
@@ -97,11 +93,9 @@ int	ft_check_map(t_data *data)
 	if (ft_check_player_spawn(data))
 	{
 		printf("No spawner\n");
-		//free
 		exit(0);
 	}
 	if (ft_check_map_border(data))
 		return (1);
-	// parcour mur
 	return (0);
 }

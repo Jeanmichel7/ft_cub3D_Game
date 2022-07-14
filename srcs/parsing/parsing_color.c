@@ -21,7 +21,6 @@ void	ft_sub_sub_fill_color(t_data *data, char *str1, char *str2)
 	{
 		printf("Invalide floor color because you suck! Need ',' between ");
 		printf("colors and need 3 args!\n");
-		//free
 		exit(0);
 	}
 	tab_color = ft_split(str2, ',');
@@ -41,7 +40,6 @@ void	ft_sub_fill_color(t_data *data, char *str1, char *str2, char *line)
 	else if (data->is_map_started && (str1[0] == 'F' || str1[0] == 'C'))
 	{
 		printf("Color is declared after map (pas bien)\n");
-		//free
 		exit(0);
 	}
 	else if (!(data->is_map_started) && ft_map_begin(line))
@@ -52,7 +50,6 @@ void	ft_sub_fill_color(t_data *data, char *str1, char *str2, char *line)
 	else
 	{
 		printf("Invalid line '%s'\n", line);
-		//free
 		exit (0);
 	}
 }

@@ -14,7 +14,6 @@
 
 int	ft_check_out(t_map_data *d)
 {
-	//check en fct lonheur ligne (int)ft_strlen(d->map[posY]) - 1
 	if (d->dir == 'E')
 	{
 		if (d->posY == 0)
@@ -46,7 +45,6 @@ int	ft_move_is_valid(char c)
 	if (c == '\0')
 	{
 		printf("Map is open\n");
-		//free;
 		exit(0);
 	}
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0')

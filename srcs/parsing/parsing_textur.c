@@ -18,7 +18,6 @@ void	ft_check_location_texture(t_data *data, char *str1)
 	(str1[0] == 'N' || str1[0] == 'S' || str1[0] == 'W' || str1[0] == 'E'))
 	{
 		printf("Texture is declared after map (pas bien)\n");
-		//free
 		exit(0);
 	}
 }
@@ -46,7 +45,6 @@ void	ft_sub_fill_texture(t_data *data, char *str1, char *str2, char *line)
 	else
 	{
 		printf("Invalid line '%s'\n", line);
-		//free
 		exit (0);
 	}
 }

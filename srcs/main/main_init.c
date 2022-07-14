@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:11:25 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/13 16:00:29 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/14 03:25:04 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ void	ft_init_data(t_data *data)
 
 void	ft_init_display(t_data *data)
 {
-	data->mlx = mlx_init(); 
+	data->mlx = mlx_init();
 	data->mlx_win = mlx_new_window(data->mlx, data->resolution_x, \
 	data->resolution_y, "LE MEILLEUR JEU AU MONDE ");
 	data->display = mlx_new_image(data->mlx, data->resolution_x, \
 	data->resolution_y);
-	data->display_add = mlx_get_data_addr(data->display,
-		&data->bits_per_pixel, &data->line_length, &data->endian);
+	data->display_add = mlx_get_data_addr(data->display, \
+	&data->bits_per_pixel, &data->line_length, &data->endian);
 }

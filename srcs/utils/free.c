@@ -19,7 +19,7 @@ void	ft_close_and_free(t_data *data)
 	ft_free_tab(data->map.tab);
 }
 
-int ft_free_texture(t_data *data)
+int	ft_free_texture(t_data *data)
 {
 	if (data->texture_N != NULL)
 		free(data->texture_N);
@@ -35,7 +35,7 @@ int ft_free_texture(t_data *data)
 void	ft_free_list(t_list *list)
 {
 	t_list	*temp;
-	
+
 	while (list)
 	{
 		temp = list->next;

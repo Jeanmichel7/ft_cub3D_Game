@@ -28,7 +28,6 @@ void	ft_check_args(int argc)
 
 int	ft_check_extension(char *str)
 {
-	//check name
 	char	**tab;
 
 	tab = ft_split(str, '.');
