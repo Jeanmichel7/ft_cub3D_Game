@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 01:30:17 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/14 03:20:09 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/14 03:29:33 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,5 @@ void	ft_copy_map(char *line, t_data *data)
 	ft_fill_map(data, list);
 	ft_free_list(list);
 	if (ft_check_map(data))
-	{
-		printf("Map is open\n");
 		exit (0);
-	}
 }

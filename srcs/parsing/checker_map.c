@@ -64,7 +64,20 @@ int	ft_check_start_following(t_map_data *d)
 	return (0);
 }
 
-int	ft_check_map_border(t_data *data)
+int	ft_check_map_border(t_map_data *map_data)
+{
+
+	if (ft_check_start_following(map_data))
+	{
+		printf("Only wall...\n");
+		exit(0);
+	}
+	if (ft_follow_wall(map_data))
+		return (1);
+	return (0);
+}
+
+int	ft_check_map(t_data *data)
 {
 	t_map_data	map_data;
 
@@ -77,25 +90,17 @@ int	ft_check_map_border(t_data *data)
 	map_data.height = data->map.height;
 	map_data.width = data->map.width;
 	map_data.nb_pass = 0;
-	if (ft_check_start_following(&map_data))
-	{
-		printf("Only wall...\n");
-		exit(0);
-	}
-	if (ft_follow_wall(&map_data))
-		return (1);
-	return (0);
-}
-
-int	ft_check_map(t_data *data)
-{
 	ft_replace_space(data);
 	if (ft_check_player_spawn(data))
 	{
 		printf("No spawner\n");
 		exit(0);
 	}
-	if (ft_check_map_border(data))
+	if (ft_check_map_border(&map_data))
+	{
+		printf("Map is open in (%d, %d)\n", map_data.posX, map_data.posY);
+		ft_print_map(&map_data);
 		return (1);
+	}
 	return (0);
 }

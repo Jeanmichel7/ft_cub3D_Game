@@ -14,11 +14,11 @@
 
 void	ft_sub_checker_chang_dir_e(t_map_data *d)
 {
-	if (ft_move_is_valid(d->map[d->posY - 1][d->posX]))
+	if (ft_move_is_valid(d, d->map[d->posY - 1][d->posX]))
 		d->dir = 'N';
-	else if (ft_move_is_valid(d->map[d->posY][d->posX + 1]))
+	else if (ft_move_is_valid(d, d->map[d->posY][d->posX + 1]))
 		;
-	else if (ft_move_is_valid(d->map[d->posY + 1][d->posX]))
+	else if (ft_move_is_valid(d, d->map[d->posY + 1][d->posX]))
 		d->dir = 'S';
 	else
 		d->dir = 'W';
@@ -26,11 +26,11 @@ void	ft_sub_checker_chang_dir_e(t_map_data *d)
 
 void	ft_sub_checker_chang_dir_s(t_map_data *d)
 {
-	if (ft_move_is_valid(d->map[d->posY][d->posX + 1]))
+	if (ft_move_is_valid(d, d->map[d->posY][d->posX + 1]))
 		d->dir = 'E';
-	else if (ft_move_is_valid(d->map[d->posY + 1][d->posX]))
+	else if (ft_move_is_valid(d, d->map[d->posY + 1][d->posX]))
 		;
-	else if (ft_move_is_valid(d->map[d->posY][d->posX - 1]))
+	else if (ft_move_is_valid(d, d->map[d->posY][d->posX - 1]))
 		d->dir = 'W';
 	else
 		d->dir = 'N';
@@ -38,11 +38,11 @@ void	ft_sub_checker_chang_dir_s(t_map_data *d)
 
 void	ft_sub_checker_chang_dir_w(t_map_data *d)
 {
-	if (ft_move_is_valid(d->map[d->posY + 1][d->posX]))
+	if (ft_move_is_valid(d, d->map[d->posY + 1][d->posX]))
 		d->dir = 'S';
-	else if (ft_move_is_valid(d->map[d->posY][d->posX - 1]))
+	else if (ft_move_is_valid(d, d->map[d->posY][d->posX - 1]))
 		;
-	else if (ft_move_is_valid(d->map[d->posY - 1][d->posX]))
+	else if (ft_move_is_valid(d, d->map[d->posY - 1][d->posX]))
 		d->dir = 'N';
 	else
 		d->dir = 'E';
@@ -50,11 +50,11 @@ void	ft_sub_checker_chang_dir_w(t_map_data *d)
 
 void	ft_sub_checker_chang_dir_n(t_map_data *d)
 {
-	if (ft_move_is_valid(d->map[d->posY][d->posX - 1]))
+	if (ft_move_is_valid(d, d->map[d->posY][d->posX - 1]))
 		d->dir = 'W';
-	else if (ft_move_is_valid(d->map[d->posY - 1][d->posX]))
+	else if (ft_move_is_valid(d, d->map[d->posY - 1][d->posX]))
 		;
-	else if (ft_move_is_valid(d->map[d->posY][d->posX + 1]))
+	else if (ft_move_is_valid(d, d->map[d->posY][d->posX + 1]))
 		d->dir = 'E';
 	else
 		d->dir = 'S';
