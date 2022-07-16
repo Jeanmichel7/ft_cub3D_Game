@@ -83,6 +83,7 @@ int	ft_follow_wall(t_map_data *d)
 		ft_move(d);
 		if (d->posX == d->x_start && d->posY == d->y_start)
 			d->nb_pass += 1;
+		//ft_print_map(d);
 		i++;
 	}
 	return (0);

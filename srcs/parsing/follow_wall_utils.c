@@ -48,7 +48,7 @@ int	ft_move_is_valid(t_map_data *map_data, char c)
 		ft_print_map(map_data);
 		exit(0);
 	}
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0')
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0' || c == ' ')
 		return (1);
 	return (0);
 }
