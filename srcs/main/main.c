@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:38:35 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/16 19:12:25 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/16 20:13:08 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	main(int argc, char **argv)
 		return (ft_free_texture(&data));
 	ft_replace_space(&data);
 
-/*
 	ft_printdata(&data);
+/*
 	
 	ft_init_display(&data);
 	mlx_key_hook(data.mlx_win, manage_keys, &data);

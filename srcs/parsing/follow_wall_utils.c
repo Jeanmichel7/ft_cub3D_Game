@@ -44,7 +44,7 @@ int	ft_move_is_valid(t_map_data *map_data, char *c)
 {
 	if (*c == '\0')
 	{
-		printf("Map is open in (%d, %d)\n", map_data->posX, map_data->posY);
+		printf("Error\nMap is open in (%d, %d)\n", map_data->posX, map_data->posY);
 		ft_print_map(map_data);
 		exit(0);
 	}

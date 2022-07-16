@@ -68,7 +68,7 @@ int	ft_check_map_border(t_map_data *map_data)
 {
 	if (ft_check_start_following(map_data))
 	{
-		printf("Only wall...\n");
+		printf("Error\nOnly wall...\n");
 		exit(0);
 	}
 	if (ft_follow_wall(map_data))
@@ -92,12 +92,12 @@ int	ft_check_map(t_data *data)
 	map_data.no_move_possible = 0;
 	if (ft_check_player_spawn(data))
 	{
-		printf("No spawner\n");
+		printf("Error\nNo spawner\n");
 		exit(0);
 	}
 	if (ft_check_map_border(&map_data))
 	{
-		printf("Map is open in (%d, %d)\n", map_data.posX, map_data.posY);
+		printf("Error\nMap is open in (%d, %d)\n", map_data.posX, map_data.posY);
 		ft_print_map(&map_data);
 		return (1);
 	}

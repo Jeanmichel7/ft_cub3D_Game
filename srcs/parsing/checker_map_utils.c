@@ -22,7 +22,7 @@ void	ft_sub_replace_space(t_data *data, int i, int j)
 	}
 	else
 	{
-		printf("Player has more than one spawner\n");
+		printf("Error\nPlayer has more than one spawner\n");
 		exit(0);
 	}
 }

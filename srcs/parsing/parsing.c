@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:21:13 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/16 17:19:05 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/16 22:11:53 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,20 @@ void	ft_fill_caract(t_data *data, char **line_splited, char *line)
 	}
 	else
 	{
-		printf("Invalid line '%s'\n", line);
+		printf("Error\nInvalid line '%s'\n", line);
 		exit (0);
 	}
 }
 
 int	ft_check_all_caract(t_data *data)
 {
+	if (data->texture_N == NULL || data->texture_S == NULL
+		|| data->texture_W == NULL || data->texture_E == NULL
+		|| data->color_floor == -1 || data->color_ceiling == -1
+		|| data->is_map_started == 0)
+		printf("Error\n");
+	if (data->is_map_started == 0)
+		printf("Missing map\n");
 	if (data->texture_N == NULL)
 		printf("Missing North texture\n");
 	if (data->texture_S == NULL)
@@ -53,10 +60,27 @@ int	ft_check_all_caract(t_data *data)
 		printf("Missing floor color\n");
 	if (data->texture_N == NULL || data->texture_S == NULL
 		|| data->texture_W == NULL || data->texture_E == NULL
-		|| data->color_floor == -1 || data->color_ceiling == -1)
-	{
+		|| data->color_floor == -1 || data->color_ceiling == -1
+		|| data->is_map_started == 0)
 		return (1);
+	return (0);
+}
+
+int	ft_empty_line(char *line)
+{
+	int	i;
+	int	c;
+
+	c = 0;
+	i = 0;
+	while (line && line[i])
+	{
+		if (line[i] == ' ' || (line[i] >=9 && line[i] <= 13))
+			c++;
+		i++;
 	}
+	if(i == c)
+		return (1);
 	return (0);
 }
 
@@ -66,6 +90,11 @@ int	ft_checker_line(char *line, t_data *data)
 
 	if (line && line[0] == '\0')
 		return (0);
+	if (ft_empty_line(line))
+	{
+		printf("Error\nSpace or tab in empty line\n");
+		exit(0);
+	}
 	line_splited = ft_split(line, ' ');
 	if (line_splited == NULL)
 		free(line_splited);
@@ -76,7 +105,7 @@ int	ft_checker_line(char *line, t_data *data)
 		ft_free_tab(line_splited);
 		return (1);
 	}
-	else if (ft_nb_section_split(line_splited) == 2)
+	else if (ft_nb_section_split(line_splited) >= 2)
 		ft_fill_caract(data, line_splited, line);
 	ft_free_tab(line_splited);
 	return (0);
@@ -93,8 +122,8 @@ int	ft_parsing(t_data *data)
 			free(line);
 		line = get_next_line(data->fd);
 	}
+	close(data->fd);
 	if (ft_check_all_caract(data))
 		exit(0);
-	close(data->fd);
 	return (0);
 }

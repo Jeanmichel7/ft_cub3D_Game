@@ -1,7 +1,6 @@
-./cub3d maps/bonus.cub
-./cub3d maps/ko_bonus_door_in_border.cub
-./cub3d maps/ko_bonus_wrong_door.cub
 ./cub3d maps/ko_color_format.cub
+./cub3d maps/ko_color_format1.cub
+./cub3d maps/ko_color_format2.cub
 ./cub3d maps/ko_color_missing.cub
 ./cub3d maps/ko_color_neg.cub
 ./cub3d maps/ko_color_non_digit.cub
@@ -42,3 +41,4 @@
 ./cub3d maps/ko_texture_typo.cub
 ./cub3d maps/ko_wrong_char.cub
 ./cub3d maps/ko_wrong_ext.cub1
+./cub3d maps/ko_only_wall.cub
