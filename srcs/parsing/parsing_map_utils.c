@@ -34,7 +34,6 @@ int	ft_map_begin(char *line)
 	{
 		if ((line[i] == '1' || line[i] == ' ') \
 		&& line[i + 1] && (line[i + 1] == '1' || line[i + 1] == ' ') \
-		&& line[i + 2] && (line[i + 2] == '1' || line[i + 2] == ' ') \
 		&& ft_is_map_border(line))
 			return (1);
 		i++;

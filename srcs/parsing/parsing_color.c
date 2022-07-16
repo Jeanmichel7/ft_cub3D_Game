@@ -47,7 +47,7 @@ void	ft_sub_fill_color(t_data *data, char *str1, char *str2, char *line)
 		data->is_map_started = 1;
 		ft_copy_map(line, data);
 	}
-	else
+	else if (str1[0] != 'N' && str1[0] != 'S' && str1[0] != 'E' && str1[0] != 'W')
 	{
 		printf("Invalid line '%s'\n", line);
 		exit (0);

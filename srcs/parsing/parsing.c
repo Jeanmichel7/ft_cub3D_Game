@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:21:13 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/14 02:11:33 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/16 17:19:05 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_fill_caract(t_data *data, char **line_splited, char *line)
 	len = ft_strlen(line_splited[0]);
 	if (len == 1)
 		ft_sub_fill_color(data, str1, str2, line);
-	else if (len < 3)
+	if (len < 3)
 		ft_sub_fill_texture(data, str1, str2, line);
 	else if (ft_map_begin(line) && data->is_map_started == 0)
 	{

@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:02:29 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/16 15:28:03 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/16 18:49:26 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ void	ft_printdata(t_data *data)
 	}
 }
 
+void	ft_print_logo(t_map_data *data, int i, int j)
+{
+	if (data->map[i][j] == '1')
+		printf("\u2B1B");
+	else if (data->map[i][j] == '0')
+		printf("\u2B1C");
+	else if (data->map[i][j] == ' ')
+		printf("  ");
+	else if (data->map[i][j] == '.')
+		printf("\u2B55");
+	else if (data->map[i][j] == 'N')
+		printf("\u2B50");
+	else
+		printf("%c", (data->map[i][j]));
+}
+
 void	ft_print_map(t_map_data *data)
 {
 	int		i;
@@ -47,7 +63,6 @@ void	ft_print_map(t_map_data *data)
 	int		temp_i;
 	int		temp_j;
 
-	printf("\n------------------------------------\n");
 	i = -1;
 	while (data->map && data->map[++i])
 	{
@@ -61,9 +76,9 @@ void	ft_print_map(t_map_data *data)
 				temp = data->map[i][j];
 				data->map[i][j] = '.';
 			}
+			ft_print_logo(data, i, j);
 		}
-		printf("%s\n", (data->map[i]));
+		printf("\n");
 	}
 	data->map[temp_i][temp_j] = temp;
-	printf("\n------------------------------------\n\n");
 }

@@ -89,7 +89,7 @@ int	ft_check_map(t_data *data)
 	map_data.height = data->map.height;
 	map_data.width = data->map.width;
 	map_data.nb_pass = 0;
-	//ft_replace_space(data);
+	map_data.no_move_possible = 0;
 	if (ft_check_player_spawn(data))
 	{
 		printf("No spawner\n");
@@ -101,5 +101,6 @@ int	ft_check_map(t_data *data)
 		ft_print_map(&map_data);
 		return (1);
 	}
+	ft_print_map(&map_data);
 	return (0);
 }

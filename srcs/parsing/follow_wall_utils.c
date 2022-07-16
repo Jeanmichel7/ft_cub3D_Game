@@ -40,15 +40,17 @@ int	ft_check_out(t_map_data *d)
 	return (0);
 }
 
-int	ft_move_is_valid(t_map_data *map_data, char c)
+int	ft_move_is_valid(t_map_data *map_data, char *c)
 {
-	if (c == '\0')
+	if (*c == '\0')
 	{
 		printf("Map is open in (%d, %d)\n", map_data->posX, map_data->posY);
 		ft_print_map(map_data);
 		exit(0);
 	}
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W' || c == '0' || c == ' ')
+	if (*c == ' ')
+		*c = '0';
+	if (*c == 'N' || *c == 'S' || *c == 'E' || *c == 'W' || *c == '0')
 		return (1);
 	return (0);
 }

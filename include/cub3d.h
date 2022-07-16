@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:29:54 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/14 03:39:34 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/16 16:40:11 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ typedef	struct s_map_data
 	int		height;
 	char	dir;
 	int		nb_pass;
+	int		no_move_possible;
 }	t_map_data;
 
 
@@ -133,7 +134,7 @@ void	ft_sub_fill_texture(t_data *data, char *str1, char *str2, char *line);
 /* CHECKER MAP */
 void	ft_replace_space(t_data *data);
 int		ft_check_out(t_map_data *d);
-int		ft_move_is_valid(t_map_data *map_data, char c);
+int		ft_move_is_valid(t_map_data *map_data, char *c);
 void	ft_move(t_map_data *d);
 
 /* FREE */
