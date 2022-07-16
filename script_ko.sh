@@ -6,8 +6,6 @@
 ./cub3d maps/ko_color_non_digit.cub
 ./cub3d maps/ko_color_over_255.cub
 ./cub3d maps/ko_color_typo.cub
-./cub3d maps/ko_duplicate_color.cub
-./cub3d maps/ko_duplicate_info.cub
 ./cub3d maps/ko_element_order.cub
 ./cub3d maps/ko_empty.cub
 ./cub3d maps/ko_invalid_texture.cub
@@ -42,3 +40,5 @@
 ./cub3d maps/ko_wrong_char.cub
 ./cub3d maps/ko_wrong_ext.cub1
 ./cub3d maps/ko_only_wall.cub
+./cub3d maps/ok_map.cub blabla
+./cub3d maps
