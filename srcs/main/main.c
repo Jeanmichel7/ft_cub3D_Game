@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:38:35 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/16 20:13:08 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/16 23:53:42 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,10 @@ int	main(int argc, char **argv)
 	if (ft_checker(argc, argv, &data) || ft_parsing(&data))
 		return (ft_free_texture(&data));
 	ft_replace_space(&data);
-
 	ft_printdata(&data);
-/*
-	
 	ft_init_display(&data);
 	mlx_key_hook(data.mlx_win, manage_keys, &data);
 	mlx_hook(data.mlx_win, 17, 0, ft_exit_game, &data);
 	mlx_loop(data.mlx);
-*/
-	ft_close_and_free(&data);
-
 	return (0);
 }

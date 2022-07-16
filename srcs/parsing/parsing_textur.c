@@ -48,3 +48,11 @@ void	ft_sub_fill_texture(t_data *data, char *str1, char *str2, char *line)
 		exit (0);
 	}
 }
+
+void	ft_sub_fill_caract(char **caract, char *str)
+{
+	if (*caract != NULL)
+		free(*caract);
+	*caract = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	ft_strlcpy(*caract, str, ft_strlen(str) + 1);
+}

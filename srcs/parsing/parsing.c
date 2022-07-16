@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:21:13 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/16 22:11:53 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/16 23:51:18 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ void	ft_fill_caract(t_data *data, char **line_splited, char *line)
 
 int	ft_check_all_caract(t_data *data)
 {
-	if (data->texture_N == NULL || data->texture_S == NULL
-		|| data->texture_W == NULL || data->texture_E == NULL
-		|| data->color_floor == -1 || data->color_ceiling == -1
-		|| data->is_map_started == 0)
+	if (ft_check_miss_caract(data))
 		printf("Error\n");
 	if (data->is_map_started == 0)
 		printf("Missing map\n");
@@ -58,10 +55,7 @@ int	ft_check_all_caract(t_data *data)
 		printf("Missing ceil color\n");
 	if (data->color_floor == -1)
 		printf("Missing floor color\n");
-	if (data->texture_N == NULL || data->texture_S == NULL
-		|| data->texture_W == NULL || data->texture_E == NULL
-		|| data->color_floor == -1 || data->color_ceiling == -1
-		|| data->is_map_started == 0)
+	if (ft_check_miss_caract(data))
 		return (1);
 	return (0);
 }
@@ -75,11 +69,11 @@ int	ft_empty_line(char *line)
 	i = 0;
 	while (line && line[i])
 	{
-		if (line[i] == ' ' || (line[i] >=9 && line[i] <= 13))
+		if (line[i] == ' ' || (line[i] >= 9 && line[i] <= 13))
 			c++;
 		i++;
 	}
-	if(i == c)
+	if (i == c)
 		return (1);
 	return (0);
 }

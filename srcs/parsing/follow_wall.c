@@ -14,14 +14,27 @@
 
 void	ft_sub_checker_chang_dir_e(t_map_data *d)
 {
-	if (ft_move_is_valid(d, &(d->map[d->posY - 1][d->posX])))
+	int	a;
+
+	a = d->is_againt_wall;
+	if (a && ft_move_is_valid(d, &(d->map[d->posY - 1][d->posX])))
 		d->dir = 'N';
+	else if (a && ft_move_is_valid(d, &(d->map[d->posY][d->posX + 1])))
+		;
+	else if (a && ft_move_is_valid(d, &(d->map[d->posY + 1][d->posX])))
+		d->dir = 'S';
+	else if (a && ft_move_is_valid(d, &(d->map[d->posY][d->posX - 1])))
+		d->dir = 'W';
+	else if (a)
+		d->no_move_possible = 1;
 	else if (ft_move_is_valid(d, &(d->map[d->posY][d->posX + 1])))
 		;
 	else if (ft_move_is_valid(d, &(d->map[d->posY + 1][d->posX])))
 		d->dir = 'S';
 	else if (ft_move_is_valid(d, &(d->map[d->posY][d->posX - 1])))
 		d->dir = 'W';
+	else if (ft_move_is_valid(d, &(d->map[d->posY - 1][d->posX])))
+		d->dir = 'N';
 	else
 		d->no_move_possible = 1;
 }

@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:02:29 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/16 21:49:44 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/16 22:49:34 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ void	ft_print_map(t_map_data *data)
 		printf("\n");
 	}
 	data->map[temp_i][temp_j] = temp;
+	printf("nb pass start : %d\n", data->nb_pass);
 }

@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:29:54 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/16 20:33:09 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/16 23:37:14 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef	struct s_map_data
 	char	dir;
 	int		nb_pass;
 	int		no_move_possible;
+	int		is_againt_wall;
 }	t_map_data;
 
 
@@ -120,8 +121,9 @@ void	ft_sub_fill_caract(char **caract, char *str);
 int		ft_nb_section_split(char **line_splited);
 void	ft_parse_color(int *color, char **tab);
 int		ft_check_comma(char	*str);
+int		ft_check_miss_caract(t_data *data);
 
-/* PASRING MAP */
+/* PARSING MAP */
 void	ft_copy_map(char *line, t_data *data);
 int		ft_map_begin(char *line);
 int		ft_is_map_border(char *line);
@@ -136,6 +138,7 @@ void	ft_replace_space(t_data *data);
 int		ft_check_out(t_map_data *d);
 int		ft_move_is_valid(t_map_data *map_data, char *c);
 void	ft_move(t_map_data *d);
+int		ft_is_againt_wall(t_map_data *d);
 
 /* FREE */
 int		ft_free_texture(t_data *data);

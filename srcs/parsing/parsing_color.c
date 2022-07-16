@@ -80,8 +80,8 @@ void	ft_sub_sub_fill_color(t_data *data, char *str1, char *str2, char *line)
 		line_data = str2;
 	if (ft_check_comma(line_data))
 	{
-		printf("Error\nInvalide floor color because you suck! Need ',' between ");
-		printf("colors and need 3 args!\n");
+		printf("Error\nInvalide floor color because you suck! Need ',' ");
+		printf("between colors and need 3 args!\n");
 		exit(0);
 	}
 	tab_color = ft_split(line_data, ',');

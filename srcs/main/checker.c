@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:11:55 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/16 22:01:02 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/16 23:29:02 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_check_extension(char *str)
 	tab = ft_split(str, '.');
 	if (tab[1] == NULL)
 	{
-		printf("Error\nNo extension\n");
+		printf("Error\nInvalid map name\n");
 		return (1);
 	}
 	if (ft_strlen(tab[1]) != 3)
