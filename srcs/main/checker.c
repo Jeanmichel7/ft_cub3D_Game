@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:11:55 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/14 01:46:53 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/16 19:14:02 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	ft_checker(int argc, char **argv, t_data *data)
 
 	ft_check_args(argc);
 	filename = argv[1];
+	printf("\n\n------------- %s ------------\n", filename);
 	if (ft_check_extension(filename))
 		return (1);
 	data->fd = open(argv[1], O_RDONLY);

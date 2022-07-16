@@ -101,6 +101,6 @@ int	ft_check_map(t_data *data)
 		ft_print_map(&map_data);
 		return (1);
 	}
-	ft_print_map(&map_data);
+	//ft_print_map(&map_data);
 	return (0);
 }
