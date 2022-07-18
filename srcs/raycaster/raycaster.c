@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 18:33:46 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 17:31:55 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 19:50:00 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,22 @@ double	ft_correct_fish_eye(double dist, double angle)
 	double	ret;
 
 	ret = dist;
-	if ((angle > 0 && angle < 90))
+	if ((angle > 0 && angle < 45))
+		ret = dist * cos(ft_conv_in_rad(angle));
+	else if ((angle > 45 && angle < 90))
 		ret = dist * cos(ft_conv_in_rad(90 - angle));
-	else if (angle > 90 && angle <= 180)
+	else if (angle > 90 && angle <= 135)
 		ret = dist * cos(ft_conv_in_rad(angle - 90));
-	else if (angle > 180 && angle <= 270)
+	else if (angle > 135 && angle <= 180)
+		ret = dist * cos(ft_conv_in_rad(180 - angle));
+	else if (angle > 180 && angle <= 225)
 		ret = dist * cos(ft_conv_in_rad(angle - 180));
-	else if (angle > 270 && angle <= 360)
+	else if (angle > 225 && angle <= 270)
+		ret = dist * cos(ft_conv_in_rad(270 - angle));
+	else if (angle > 270 && angle <= 315)
 		ret = dist * cos(ft_conv_in_rad(angle - 270));
+	else if (angle > 315 && angle <= 360)
+		ret = dist * cos(ft_conv_in_rad(360 - angle));
 
 	//ret = dist * cos(ft_conv_in_rad((int)angle % 90));
 
@@ -111,7 +119,7 @@ void	ft_raycaster(t_data *d)
 		//printf("distance sur vertical : %f\n\n\n", dist_sur_y);
 
 
-		if (dist_sur_y == -1)
+		if (dist_sur_y == -1) // les 2 a -1
 			dist = dist_sur_x;
 		else if (dist_sur_x == -1)
 			dist = dist_sur_y;
@@ -123,6 +131,7 @@ void	ft_raycaster(t_data *d)
 
 
 		dist_correct = ft_correct_fish_eye(dist, angle);
+		//dist_correct = dist;
 		display_height = (d->ray_data.dist_cam_ecran * BLOCK_SIZE) / (dist_correct);
 		ft_fill_column(d, i, display_height);
 

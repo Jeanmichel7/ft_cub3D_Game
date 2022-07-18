@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 23:59:54 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 18:34:24 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 19:36:21 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ double	ft_calcul_dist_vert(double angle, t_data *d, double x_test, double y_test
 	{
 		if (angle > 0 && angle <= 90)
 			return (sqrt(pow((d->ray_data.pos_y - y_test), 2) + pow((x_test - d->ray_data.pos_x), 2)));
-		else if (angle > 90 && angle <= 180)
+		else if (angle > (double)90 && angle <= (double)180)
 			return (sqrt(pow((d->ray_data.pos_y - y_test), 2) + pow((d->ray_data.pos_x - x_test), 2)));
 	}
 	else
 	{
-		if (angle > 180 && angle <= 270)
+		if (angle > (double)180 && angle <= (double)270)
 			return (sqrt(pow((y_test - d->ray_data.pos_y), 2) + pow((d->ray_data.pos_x - x_test), 2)));
 		else
 			return (sqrt(pow((y_test - d->ray_data.pos_y), 2) + pow((x_test - d->ray_data.pos_x), 2)));
