@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:11:25 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 15:52:26 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 16:58:29 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ void	ft_init_data(t_data *data)
 	data->bpp = 32;
 	data->size_line = data->resolution_x * 4;
 	data->endian = 0;
+
+	data->ray_data.orientation = -1;
 }
 
 void	ft_init_raycasing_data(t_data *d)
 {
-	d->ray_data.orientation = 90;
 	d->ray_data.dist_cam_ecran = (d->resolution_x / 2) / tan(ft_conv_in_rad(d->fov / 2));
 	d->ray_data.angle_between_radius = (float)d->fov / (float)d->resolution_x;
 	d->ray_data.plan_x = d->resolution_x;

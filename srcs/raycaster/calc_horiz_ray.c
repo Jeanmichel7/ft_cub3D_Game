@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 23:47:04 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 15:23:25 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 17:31:26 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,19 @@ int	ft_block_is_wall_on_horiz_next_y(t_data *d, double x, double y, int sens)
 	int	i_x;
 	int	i_y;
 
+	printf("pos teste (%f, %f)\n", x, y);
+
 	i_x = x / 48;
-	if (sens)
+	if (sens == 1)
 		i_y = y / 48 - sens;
 	else
 		i_y = y / 48;
+
+	printf("ind teste tab[%d][%d]\n", i_y, i_x);
+	
 	if (d->map.tab[i_y][i_x] == '1')
 	{
-		//printf("touche le mur en tab[%d][%d]\n",i_y, i_x);
+		printf("touche le mur en tab[%d][%d]\n",i_y, i_x);
 		return (1);
 	}
 	else
@@ -62,10 +67,6 @@ double	ft_dist_sur_x(t_data *d, double angle)
 
 	int		j;
 
-	if (angle > 0 && angle <= 180)
-		sens_horiz = 1;
-	else
-		sens_horiz = -1;
 		
 	//if ((angle > 0 && angle <= 90) || (angle > 270 && angle <= 360))
 	//	sens_vert = 1;
@@ -77,17 +78,42 @@ double	ft_dist_sur_x(t_data *d, double angle)
 	x1 = ((BLOCK_SIZE / 2) + BLOCK_SIZE) / tan(ft_conv_in_rad(angle));
 	x = x1 - x0;
 	//printf("x : %f, x0 : %f, x1 : %f\n", x, x0, x1);
+	
+	
+	if (angle > 0 && angle <= 180)
+		sens_horiz = 1;
+	else
+		sens_horiz = -1;
 
 	x_test = d->ray_data.pos_x + (sens_horiz * x0);
 	y_test = d->ray_data.pos_y - (sens_horiz * (BLOCK_SIZE / 2));
-	//printf("pos x0 (%f, %f)\n", x_test, y_test);
+	printf("pos x0 (%f, %f)\n", x_test, y_test);
 
+	if (x_test < (double)0 || y_test < (double)0)
+	{
+		printf("Touche aucun mur\n");
+		return (-1);
+	}
+	
 	j = 1;
 	while (ft_block_is_wall_on_horiz_next_y(d, x_test, y_test, sens_horiz) != 1)	// def distance max ?
 	{
+
+		if (angle > 0 && angle <= 180)
+			sens_horiz = 1;
+		else
+			sens_horiz = -1;
+
+
 		x_test = d->ray_data.pos_x + (sens_horiz * (x0 + (j * x)));
 		y_test = d->ray_data.pos_y - (sens_horiz * ((BLOCK_SIZE / 2) + (j * BLOCK_SIZE)));
 		j++;
+
+		if (x_test < (double)0 || y_test < (double)0)
+	{
+		printf("Touche aucun mur\n");
+		return (-1);
+	}
 	}
 
 	return (ft_calcul_dist_horiz(angle, d, x_test, y_test));
