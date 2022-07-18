@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:29:54 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/18 16:11:58 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 23:15:09 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 
 #define PI 3.1415926535
 #define	BLOCK_SIZE 48
+#define	SPEED 6
 
 typedef struct s_map
 {
@@ -42,7 +43,7 @@ typedef struct ray_data
 	double	angle_between_radius;
 	double	pos_x;			// position du joueur 
 	double	pos_y;
-	double	plan_x;		// ecran de projection
+	double	plan_x;			// ecran de projection
 	double	plan_y;
 	double	center_plan_x;
 	double	center_plan_y;
