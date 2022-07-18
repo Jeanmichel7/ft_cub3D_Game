@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 23:59:54 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 18:34:24 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 20:16:37 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ double	ft_calcul_dist_vert(double angle, t_data *d, double x_test, double y_test
 	{
 		if (angle > 0 && angle <= 90)
 			return (sqrt(pow((d->ray_data.pos_y - y_test), 2) + pow((x_test - d->ray_data.pos_x), 2)));
-		else if (angle > 90 && angle <= 180)
+		else if (angle > (double)90 && angle <= (double)180)
 			return (sqrt(pow((d->ray_data.pos_y - y_test), 2) + pow((d->ray_data.pos_x - x_test), 2)));
 	}
 	else
 	{
-		if (angle > 180 && angle <= 270)
+		if (angle > (double)180 && angle <= (double)270)
 			return (sqrt(pow((y_test - d->ray_data.pos_y), 2) + pow((d->ray_data.pos_x - x_test), 2)));
 		else
 			return (sqrt(pow((y_test - d->ray_data.pos_y), 2) + pow((x_test - d->ray_data.pos_x), 2)));
@@ -74,25 +74,25 @@ double	ft_dist_sur_y(t_data *d, double angle)
 	y0 = (BLOCK_SIZE / 2) * (tan(ft_conv_in_rad(angle)));	// BLOCK / 2 -> position réel dans le bloc sur x
 	y1 = ((BLOCK_SIZE / 2) + BLOCK_SIZE) * tan(ft_conv_in_rad(angle));
 	y = y1 - y0;
-	printf("y : %f, y0 : %f, y1 : %f\n", y, y0, y1);
+	//printf("y : %f, y0 : %f, y1 : %f\n", y, y0, y1);
 
 	if ((angle > 0 && angle <= 90) || (angle > 270 && angle <= 360))
 		sens_vert = 1;
 	else
 		sens_vert = -1;
-	if (angle > 0 && angle <= 180)
-		sens_horiz = 1;
-	else
-		sens_horiz = -1;
+	//if (angle > 0 && angle <= 180)
+	//	sens_horiz = 1;
+	//else
+	//	sens_horiz = -1;
 
 	x_test = d->ray_data.pos_x + (sens_vert * (BLOCK_SIZE / 2));
 	y_test = d->ray_data.pos_y - (sens_vert * y0);
-	printf("pos y0 (%f, %f)\n", x_test, y_test);
+	//printf("pos y0 (%f, %f)\n", x_test, y_test);
 
 
-	if (x_test < (double)0 || y_test < (double)0)
+	if (x_test < (double)0 || y_test < (double)0 || x_test > d->map.width * 48 || y_test > d->map.height * 48)
 	{
-		printf("Touche aucun mur\n");
+		//printf("Touche aucun mur\n");
 		return (-1);
 	}
 
@@ -103,10 +103,10 @@ double	ft_dist_sur_y(t_data *d, double angle)
 	while (ft_block_is_wall_on_vert_next_x(d, x_test, y_test, sens_vert) != 1)
 	{
 
-		if (angle > 0 && angle <= 180)
-			sens_horiz = 1;
-		else
-			sens_horiz = -1;
+		//if (angle > 0 && angle <= 180)
+		//	sens_horiz = 1;
+		//else
+		//	sens_horiz = -1;
 			
 		if ((angle > 0 && angle <= 90) || (angle > 270 && angle <= 360))
 			sens_vert = 1;
@@ -120,9 +120,9 @@ double	ft_dist_sur_y(t_data *d, double angle)
 		//d->ray_data.pos_y,
 		//sens_horiz,
 		//y0, j, y);
-		if (x_test < (double)0 || y_test < (double)0) // distance max ?
+		if (x_test < (double)0 || y_test < (double)0 || x_test > d->map.width * 48 || y_test > d->map.height * 48) // distance max ?
 		{
-			printf("Touche aucun mur\n");
+			//printf("Touche aucun mur\n");
 			return (-1);
 		}
 		

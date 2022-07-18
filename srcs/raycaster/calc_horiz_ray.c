@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 23:47:04 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 17:31:26 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 20:16:06 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_block_is_wall_on_horiz_next_y(t_data *d, double x, double y, int sens)
 	int	i_x;
 	int	i_y;
 
-	printf("pos teste (%f, %f)\n", x, y);
+	//printf("pos teste (%f, %f)\n", x, y);
 
 	i_x = x / 48;
 	if (sens == 1)
@@ -25,7 +25,7 @@ int	ft_block_is_wall_on_horiz_next_y(t_data *d, double x, double y, int sens)
 	else
 		i_y = y / 48;
 
-	printf("ind teste tab[%d][%d]\n", i_y, i_x);
+	//printf("ind teste tab[%d][%d]\n", i_y, i_x);
 	
 	if (d->map.tab[i_y][i_x] == '1')
 	{
@@ -89,9 +89,9 @@ double	ft_dist_sur_x(t_data *d, double angle)
 	y_test = d->ray_data.pos_y - (sens_horiz * (BLOCK_SIZE / 2));
 	printf("pos x0 (%f, %f)\n", x_test, y_test);
 
-	if (x_test < (double)0 || y_test < (double)0)
+	if (x_test < (double)0 || y_test < (double)0 || x_test > d->map.width * 48 || y_test > d->map.height * 48)
 	{
-		printf("Touche aucun mur\n");
+		//printf("Touche aucun mur\n");
 		return (-1);
 	}
 	
@@ -109,11 +109,11 @@ double	ft_dist_sur_x(t_data *d, double angle)
 		y_test = d->ray_data.pos_y - (sens_horiz * ((BLOCK_SIZE / 2) + (j * BLOCK_SIZE)));
 		j++;
 
-		if (x_test < (double)0 || y_test < (double)0)
-	{
-		printf("Touche aucun mur\n");
-		return (-1);
-	}
+		if (x_test < (double)0 || y_test < (double)0 || x_test > d->map.width * 48 || y_test > d->map.height * 48)
+		{
+			//printf("Touche aucun mur\n");
+			return (-1);
+		}
 	}
 
 	return (ft_calcul_dist_horiz(angle, d, x_test, y_test));
