@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 18:33:46 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 20:18:12 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/19 01:13:23 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_fill_column(t_data *d, int j, double height)
 	while (i < d->resolution_y)
 	{
 		pos = j * 4 + ((d->size_line) * i);
+
 		if (i < begin_wall)
 		{
 			d->img_data[pos] = 100;
@@ -45,6 +46,15 @@ void	ft_fill_column(t_data *d, int j, double height)
 			d->img_data[pos + 1] = 100;
 			d->img_data[pos + 2] = 100;
 		}
+
+		/*
+		if (i < begin_wall)
+			d->img_data[pos] = (char)d->color_ceiling;
+		else if (i >= begin_wall && i <= end_wall)
+			d->img_data[pos] = (char)16777215;
+		else
+			d->img_data[pos] = (char)d->color_floor;
+		*/
 		i++;
 	}
 
