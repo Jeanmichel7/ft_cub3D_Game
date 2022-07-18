@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 18:34:26 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 23:37:02 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 23:42:29 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	manage_keys(int key, t_data *data)
 	{
 		data->ray_data.pos_y -= SPEED;
 	}
-
-	if (key == 's')
+	else if (key == 's')
 		data->ray_data.pos_y += SPEED;
-	if (key == 'd')
+	
+	else if (key == 'd')
 		data->ray_data.pos_x += SPEED;
-	if (key == 'q')
+	else if (key == 'q')
 		data->ray_data.pos_x -= SPEED;
 
 
