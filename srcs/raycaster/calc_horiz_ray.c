@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 23:47:04 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 02:46:44 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 02:59:50 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,8 @@ double	ft_dist_sur_x(t_data *d, double angle)
 	x0 = (BLOCK_SIZE / 2) / (tan(ft_conv_in_rad(angle))); // BLOCK / 2 -> position réel dans le bloc sur y
 	x1 = ((BLOCK_SIZE / 2) + BLOCK_SIZE) / tan(ft_conv_in_rad(angle));
 	x = x1 - x0;
-	printf("x : %f, x0 : %f, x1 : %f\n", x, x0, x1);
+	//printf("x : %f, x0 : %f, x1 : %f\n", x, x0, x1);
 
-	//x_test = d->ray_data.pos_x + (sens_vert * x0);
 	x_test = d->ray_data.pos_x + (sens_horiz * x0);
 	y_test = d->ray_data.pos_y - (sens_horiz * (BLOCK_SIZE / 2));
 	printf("pos x0 (%f, %f)\n", x_test, y_test);
@@ -86,7 +85,7 @@ double	ft_dist_sur_x(t_data *d, double angle)
 	j = 1;
 	while (ft_block_is_wall_on_horiz_next_y(d, x_test, y_test, sens_horiz) != 1)	// def distance max ?
 	{
-		x_test = d->ray_data.pos_x + x0 + (j * x);
+		x_test = d->ray_data.pos_x + (sens_horiz * (x0 + (j * x)));
 		y_test = d->ray_data.pos_y - (sens_horiz * ((BLOCK_SIZE / 2) + (j * BLOCK_SIZE)));
 		j++;
 	}

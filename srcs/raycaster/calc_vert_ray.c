@@ -6,28 +6,40 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 23:59:54 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 02:46:43 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 03:20:58 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
-/*
-int	ft_block_is_wall_on_horiz_next_y(t_data *d, double x, double y, int sens)
+
+int	ft_block_is_wall_on_vert_next_x(t_data *d, double x, double y, int sens)
 {
 	int	i_x;
 	int	i_y;
 
-	i_x = x / 48;
-	i_y = y / 48 - sens;
-	if (d->map.tab[i_y][i_x] == '1')
+	if (y < 0)
 	{
-		printf("touche le mur en tab[%d][%d]\n",i_y, i_x);
+		printf("On esquive (%f, %f)\n", x, y);
+		return (0);
+	}
+
+	if (sens == 1)
+		i_x = x / 48;
+	else
+		i_x = (x / 48) - 1;
+	i_y = y / 48;
+
+	printf("i_x: %d, i_y: %d\n", i_x, i_y);
+	
+	if (i_y >= 0 && d->map.tab[i_y][i_x] == '1')
+	{
+		printf("touche le mur en tab[%d][%d]\n\n",i_y, i_x);
 		return (1);
 	}
 	else
 		return (0);
 }
-
+/*
 double	ft_calcul_dist_horiz(double angle, t_data *d, double x_test, double y_test)
 {
 	if (angle > 0 && angle <= 180)
@@ -72,23 +84,21 @@ double	ft_dist_sur_y(t_data *d, double angle)
 	y0 = (BLOCK_SIZE / 2) * (tan(ft_conv_in_rad(angle)));	// BLOCK / 2 -> position réel dans le bloc sur x
 	y1 = ((BLOCK_SIZE / 2) + BLOCK_SIZE) * tan(ft_conv_in_rad(angle));
 	y = y0 - y1;
-	printf("y : %f, y0 : %f, y1 : %f\n", y, y0, y1);
+	//printf("y : %f, y0 : %f, y1 : %f\n", y, y0, y1);
 
 	x_test = d->ray_data.pos_x + (sens_vert * (BLOCK_SIZE / 2));
-	//y_test = d->ray_data.pos_y - (sens_horiz * y0);
 	y_test = d->ray_data.pos_y - (sens_vert * y0);
-	printf("pos y0 (%f, %f)\n\n", x_test, y_test); // attention y < 0 et y > beaucoup
+	printf("pos y0 (%f, %f)\n", x_test, y_test); // attention y < 0 et y > beaucoup
 
-/*
+
 	j = 1;
-	while (ft_block_is_wall_on_horiz_next_y(d, x_test, y_test, sens_vert) != 1)	// def distance max ?
+	while (ft_block_is_wall_on_vert_next_x(d, x_test, y_test, sens_vert) != 1)	// def distance max ?
 	{
-		x_test = d->ray_data.pos_x + x0 + (j * x);
-		y_test = d->ray_data.pos_y - ((BLOCK_SIZE / 2) + (j * BLOCK_SIZE));
+		x_test = d->ray_data.pos_x + (sens_vert * ((BLOCK_SIZE / 2) + (j * BLOCK_SIZE)));
+		y_test = d->ray_data.pos_y - (sens_vert * (y0 + (j * y)));
 		j++;
 	}
 
-	return (ft_calcul_dist_horiz(angle, d, x_test, y_test));
-*/
-	return (0);
+	//return (ft_calcul_dist_horiz(angle, d, x_test, y_test));
+	return 0;
 }
