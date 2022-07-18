@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 23:48:35 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/17 23:48:37 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 16:11:55 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "../../include/cub3d.h"
 
 // X position * 4 + Line size * Y position * 4
-
 void	ft_fill_line(t_data *d)
 {
 	long 	pos;
@@ -34,6 +33,8 @@ void	ft_fill_line(t_data *d)
 
 }
 
+
+/*
 void	ft_fill_column(t_data *d)
 {
 	long 	pos;
@@ -52,8 +53,9 @@ void	ft_fill_column(t_data *d)
 	mlx_put_image_to_window(d->mlx, d->mlx_win, d->mlx_img, 0, 0);
 }
 
+
 void	ft_fill_img(t_data *d)
 {
 	ft_fill_column(d);
 }
-
+*/

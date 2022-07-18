@@ -6,14 +6,75 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 18:33:46 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 15:24:12 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 16:49:41 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
 
+void	ft_fill_column(t_data *d, int j, double height)
+{
+	long	pos;
+	int		i;
+	int		begin_wall;
+	int		end_wall;
 
+	(int)height;
+	begin_wall = (d->resolution_y - height) / 2;
+	end_wall = begin_wall + height;
+
+
+	i = 0;
+	while (i < d->resolution_y)
+	{
+		pos = j * 4 + ((d->size_line) * i);
+		if (i < begin_wall)
+		{
+			d->img_data[pos] = 100;
+			d->img_data[pos + 1] = 100;
+			d->img_data[pos + 2] = 100;
+		}
+		else if (i > begin_wall && i < end_wall)
+		{
+			d->img_data[pos] = 255;
+			d->img_data[pos + 1] = 255;
+			d->img_data[pos + 2] = 255;
+		}
+		else
+		{
+			d->img_data[pos] = 100;
+			d->img_data[pos + 1] = 100;
+			d->img_data[pos + 2] = 100;
+		}
+		i++;
+	}
+
+
+	//mlx_destroy_image()
+	mlx_put_image_to_window(d->mlx, d->mlx_win, d->mlx_img, 0, 0);
+}
+
+
+double	ft_correct_fish_eye(double dist, double angle)
+{
+	double	ret;
+
+	ret = dist;
+	if ((angle > 0 && angle < 90))
+		ret = dist * cos(ft_conv_in_rad(90 - angle));
+	else if (angle > 90 && angle <= 180)
+		ret = dist * cos(ft_conv_in_rad(angle - 90));
+	else if (angle > 180 && angle <= 270)
+		ret = dist * cos(ft_conv_in_rad(angle - 180));
+	else if (angle > 270 && angle <= 360)
+		ret = dist * cos(ft_conv_in_rad(angle - 270));
+
+	//ret = dist * cos(ft_conv_in_rad((int)angle % 90));
+
+
+	return (ret);
+}
 
 void	ft_raycaster(t_data *d)
 {
@@ -23,6 +84,9 @@ void	ft_raycaster(t_data *d)
 	double	dist_sur_x;
 	double	dist_sur_y;
 	double	dist;
+
+	double	display_height;
+	double	dist_correct;
 
 
 
@@ -62,8 +126,20 @@ void	ft_raycaster(t_data *d)
 			printf("calcul distance final etrange\n");
 
 		printf("dist_sur_x : %f\ndist_sur_y: %f\n", dist_sur_x, dist_sur_y);
-		printf("distance du rayon : %f\n\n", dist);
+		printf("distance du rayon : %f\n", dist);
 
+		dist_correct = ft_correct_fish_eye(dist, angle);
+		//dist_correct = dist;
+
+
+		display_height = (d->ray_data.dist_cam_ecran * BLOCK_SIZE) / (dist_correct);
+		printf("hauteur affichage : %f\n\n", display_height);
+
+
+
+
+
+		ft_fill_column(d, i, display_height);
 
 		angle -= d->ray_data.angle_between_radius;
 		i++;

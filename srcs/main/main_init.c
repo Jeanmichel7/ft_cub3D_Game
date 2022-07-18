@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:11:25 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 01:04:02 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 15:52:26 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void	ft_init_display(t_data *data)
 {
 	ft_init_raycasing_data(data);
 
-	
 	data->mlx = mlx_init();
 	data->mlx_win = mlx_new_window(data->mlx, data->resolution_x, \
 	data->resolution_y, "WOLFENCHTEIN");
@@ -69,7 +68,6 @@ void	ft_init_display(t_data *data)
 	data->resolution_y);
 	data->img_data = mlx_get_data_addr(data->mlx_img, \
 	&data->bpp, &data->size_line, &data->endian);
-
 
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->mlx_img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 23:59:54 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 15:26:47 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 15:57:43 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ double	ft_calcul_dist_vert(double angle, t_data *d, double x_test, double y_test
 	else
 	{
 		if (angle > 180 && angle <= 270)
-			return (sqrt( pow((y_test - d->ray_data.pos_y), 2) + pow((d->ray_data.pos_x - x_test), 2)));
+			return (sqrt(pow((y_test - d->ray_data.pos_y), 2) + pow((d->ray_data.pos_x - x_test), 2)));
 		else
-			return (sqrt( pow((y_test - d->ray_data.pos_y), 2) + pow((x_test - d->ray_data.pos_x), 2)));
+			return (sqrt(pow((y_test - d->ray_data.pos_y), 2) + pow((x_test - d->ray_data.pos_x), 2)));
 	}
 	return (0);
 }
@@ -95,7 +95,7 @@ double	ft_dist_sur_y(t_data *d, double angle)
 	j = 1;
 	//while (x_test && y_test && x_test < d->map.width * 48 && y < d->map.height * 48
 	//&& ft_block_is_wall_on_vert_next_x(d, x_test, y_test, sens_vert) != 1)	// def distance max ?
-	while (ft_block_is_wall_on_vert_next_x(d, x_test, y_test, sens_vert) != 1)	// def distance max ?
+	while (ft_block_is_wall_on_vert_next_x(d, x_test, y_test, sens_vert) != 1)
 	{
 
 		if ((angle > 0 && angle <= 90) || (angle > 270 && angle <= 360))
@@ -105,7 +105,7 @@ double	ft_dist_sur_y(t_data *d, double angle)
 
 		x_test = d->ray_data.pos_x + (sens_vert * ((BLOCK_SIZE / 2) + (j * BLOCK_SIZE)));
 		y_test = d->ray_data.pos_y - (sens_vert * y0) - (j * y);
-		if (x_test < (double)0 || y_test < (double)0)
+		if (x_test < (double)0 || y_test < (double)0) // distance max ?
 		{
 			//printf("Touche aucun mur\n\n");
 			return (-1);

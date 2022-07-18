@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:29:54 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/18 01:54:26 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 16:11:58 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,6 @@ double	ft_dist_sur_y(t_data *d, double angle);
 
 /* TEST */
 void	ft_fill_line(t_data *d);
-void	ft_fill_column(t_data *d);
 
 
 /* FREE */
