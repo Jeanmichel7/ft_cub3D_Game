@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 23:47:04 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 00:48:30 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 02:46:44 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	ft_block_is_wall_on_horiz_next_y(t_data *d, double x, double y, int sens)
 	int	i_y;
 
 	i_x = x / 48;
-	i_y = y / 48 - sens;
+	if (sens)
+		i_y = y / 48 - sens;
+	else
+		i_y = y / 48;
 	if (d->map.tab[i_y][i_x] == '1')
 	{
 		printf("touche le mur en tab[%d][%d]\n",i_y, i_x);
@@ -54,13 +57,20 @@ double	ft_dist_sur_x(t_data *d, double angle)
 	double	x;
 	double	x_test;
 	double	y_test;
-	int		sens;
+	int		sens_horiz;
+	//int		sens_vert;
+
 	int		j;
 
 	if (angle > 0 && angle <= 180)
-		sens = 1;
+		sens_horiz = 1;
 	else
-		sens = -1;
+		sens_horiz = -1;
+		
+	//if ((angle > 0 && angle <= 90) || (angle > 270 && angle <= 360))
+	//	sens_vert = 1;
+	//else
+	//	sens_vert = -1;
 
 	// angle % 90 ?!
 	x0 = (BLOCK_SIZE / 2) / (tan(ft_conv_in_rad(angle))); // BLOCK / 2 -> position réel dans le bloc sur y
@@ -68,16 +78,16 @@ double	ft_dist_sur_x(t_data *d, double angle)
 	x = x1 - x0;
 	printf("x : %f, x0 : %f, x1 : %f\n", x, x0, x1);
 
-	//verif wall pos
-	x_test = d->ray_data.pos_x + x0;
-	y_test = d->ray_data.pos_y - (sens * (BLOCK_SIZE / 2));
+	//x_test = d->ray_data.pos_x + (sens_vert * x0);
+	x_test = d->ray_data.pos_x + (sens_horiz * x0);
+	y_test = d->ray_data.pos_y - (sens_horiz * (BLOCK_SIZE / 2));
 	printf("pos x0 (%f, %f)\n", x_test, y_test);
 
 	j = 1;
-	while (ft_block_is_wall_on_horiz_next_y(d, x_test, y_test, sens) != 1)	// def distance max ?
+	while (ft_block_is_wall_on_horiz_next_y(d, x_test, y_test, sens_horiz) != 1)	// def distance max ?
 	{
 		x_test = d->ray_data.pos_x + x0 + (j * x);
-		y_test = d->ray_data.pos_y - (sens * ((BLOCK_SIZE / 2) + (j * BLOCK_SIZE)));
+		y_test = d->ray_data.pos_y - (sens_horiz * ((BLOCK_SIZE / 2) + (j * BLOCK_SIZE)));
 		j++;
 	}
 

@@ -6,15 +6,18 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:11:25 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 00:48:21 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 01:04:02 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/cub3d.h"
 
-float	ft_conv_in_rad(float degre)
+double	ft_conv_in_rad(double degre)
 {
-	return (degre*PI/180);
+	double	ret;
+
+	ret = degre * PI / (double)180;
+	return (ret);
 }
 
 void	ft_init_data(t_data *data)

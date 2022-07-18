@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:29:54 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/18 00:48:13 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 01:54:26 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,10 +161,11 @@ void	ft_sub_fill_texture(t_data *data, char *str1, char *str2, char *line);
 int		manage_keys(int key, t_data *data);
 
 void	ft_raycaster(t_data *data);
-float	ft_conv_in_rad(float degre);
+double	ft_conv_in_rad(double degre);
 
 /* CALC DIST RAY */
 double	ft_dist_sur_x(t_data *d, double angle);
+double	ft_dist_sur_y(t_data *d, double angle);
 
 
 

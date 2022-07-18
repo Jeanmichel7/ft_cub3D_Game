@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 18:33:46 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 00:48:42 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 02:46:59 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	ft_raycaster(t_data *d)
 		printf("angle %f, i : %d\n", angle, i);
 
 		//DISTANCE SUR X
-		dist_sur_x = ft_dist_sur_x(d, angle);
-		printf("distance sur horizontale : %f\n\n\n", dist_sur_x);
+		//dist_sur_x = ft_dist_sur_x(d, angle);
+		//printf("distance sur horizontale : %f\n\n\n", dist_sur_x);
 
 
 		//DIST sur Y
-		//dist_sur_y = ft_dist_sur_y(d, angle);
+		dist_sur_y = ft_dist_sur_y(d, angle);
 		//printf("distance sur vertical : %f\n\n\n", dist_sur_y);
 
 
