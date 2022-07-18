@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 18:33:46 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 16:49:41 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 17:31:55 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ void	ft_fill_column(t_data *d, int j, double height)
 	int		begin_wall;
 	int		end_wall;
 
-	(int)height;
 	begin_wall = (d->resolution_y - height) / 2;
 	end_wall = begin_wall + height;
-
 
 	i = 0;
 	while (i < d->resolution_y)
@@ -49,7 +47,6 @@ void	ft_fill_column(t_data *d, int j, double height)
 		}
 		i++;
 	}
-
 
 	//mlx_destroy_image()
 	mlx_put_image_to_window(d->mlx, d->mlx_win, d->mlx_img, 0, 0);
@@ -81,8 +78,8 @@ void	ft_raycaster(t_data *d)
 	int		i;
 	double	angle;
 
-	double	dist_sur_x;
-	double	dist_sur_y;
+	double	dist_sur_x = -1;
+	double	dist_sur_y = -1;
 	double	dist;
 
 	double	display_height;
@@ -122,23 +119,11 @@ void	ft_raycaster(t_data *d)
 			dist = dist_sur_x;
 		else if (dist_sur_y < dist_sur_x)
 			dist = dist_sur_y;
-		else
-			printf("calcul distance final etrange\n");
+		printf("distance du rayon : %f\n\n", dist);
 
-		printf("dist_sur_x : %f\ndist_sur_y: %f\n", dist_sur_x, dist_sur_y);
-		printf("distance du rayon : %f\n", dist);
 
 		dist_correct = ft_correct_fish_eye(dist, angle);
-		//dist_correct = dist;
-
-
 		display_height = (d->ray_data.dist_cam_ecran * BLOCK_SIZE) / (dist_correct);
-		printf("hauteur affichage : %f\n\n", display_height);
-
-
-
-
-
 		ft_fill_column(d, i, display_height);
 
 		angle -= d->ray_data.angle_between_radius;
