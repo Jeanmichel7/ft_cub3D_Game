@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 23:47:04 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 02:59:50 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 15:23:25 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_block_is_wall_on_horiz_next_y(t_data *d, double x, double y, int sens)
 		i_y = y / 48;
 	if (d->map.tab[i_y][i_x] == '1')
 	{
-		printf("touche le mur en tab[%d][%d]\n",i_y, i_x);
+		//printf("touche le mur en tab[%d][%d]\n",i_y, i_x);
 		return (1);
 	}
 	else
@@ -80,7 +80,7 @@ double	ft_dist_sur_x(t_data *d, double angle)
 
 	x_test = d->ray_data.pos_x + (sens_horiz * x0);
 	y_test = d->ray_data.pos_y - (sens_horiz * (BLOCK_SIZE / 2));
-	printf("pos x0 (%f, %f)\n", x_test, y_test);
+	//printf("pos x0 (%f, %f)\n", x_test, y_test);
 
 	j = 1;
 	while (ft_block_is_wall_on_horiz_next_y(d, x_test, y_test, sens_horiz) != 1)	// def distance max ?

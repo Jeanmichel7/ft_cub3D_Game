@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 18:33:46 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 02:56:45 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/18 15:24:12 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,7 @@ void	ft_raycaster(t_data *d)
 
 	double	dist_sur_x;
 	double	dist_sur_y;
-
-
-
-	double	y0;
-	double	y1;
-	double	y;
+	double	dist;
 
 
 
@@ -46,13 +41,28 @@ void	ft_raycaster(t_data *d)
 		printf("angle %f, i : %d\n", angle, i);
 
 		//DISTANCE SUR X
-		//dist_sur_x = ft_dist_sur_x(d, angle);
+		dist_sur_x = ft_dist_sur_x(d, angle);
 		//printf("distance sur horizontale : %f\n\n\n", dist_sur_x);
 
 
 		//DIST sur Y
 		dist_sur_y = ft_dist_sur_y(d, angle);
 		//printf("distance sur vertical : %f\n\n\n", dist_sur_y);
+
+
+		if (dist_sur_y == -1)
+			dist = dist_sur_x;
+		else if (dist_sur_x == -1)
+			dist = dist_sur_y;
+		else if (dist_sur_x <= dist_sur_y)
+			dist = dist_sur_x;
+		else if (dist_sur_y < dist_sur_x)
+			dist = dist_sur_y;
+		else
+			printf("calcul distance final etrange\n");
+
+		printf("dist_sur_x : %f\ndist_sur_y: %f\n", dist_sur_x, dist_sur_y);
+		printf("distance du rayon : %f\n\n", dist);
 
 
 		angle -= d->ray_data.angle_between_radius;
