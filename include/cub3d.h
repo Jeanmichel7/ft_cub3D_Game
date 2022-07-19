@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:29:54 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/18 23:15:09 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/19 16:31:28 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include "../mlx_linux/mlx.h"
 # include "../mlx_mac/mlx.h"
 # include <stdio.h>
 # include <sys/types.h>
@@ -84,12 +83,20 @@ typedef struct s_data
 	int		color_floor; 			//color
 	int		color_ceiling;			//color
 	int		bpp;					// mlx_get_data_addr
-	int		size_line;			// mlx_get_data_addr
+	int		size_line;				// mlx_get_data_addr
 	int		endian;					// mlx_get_data_addr
 
 	int		fd;
 	//void	*display;			// ray casting
 	//char	*display_add;		// ray casting
+
+	int		forward;
+	int		backward;
+	int		right;
+	int		left;
+	int		rotate_right;
+	int		rotate_left;
+	int		key;
 
 	int		angle;
 	char	player_spawn_dir;
@@ -155,13 +162,14 @@ void	ft_sub_fill_texture(t_data *data, char *str1, char *str2, char *line);
 
 
 
-
-
+/* MANAGE KEY */
+int		ft_press_key(int key, t_data *data);
+int		ft_release_key(int key, t_data *data);
 
 /* RAYCASTING */
 int		manage_keys(int key, t_data *data);
 
-void	ft_raycaster(t_data *data);
+int		ft_raycaster(t_data *d);
 double	ft_conv_in_rad(double degre);
 
 /* CALC DIST RAY */

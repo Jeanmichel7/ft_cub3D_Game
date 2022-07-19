@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:11:25 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/18 16:58:29 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/19 15:04:48 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,21 @@ void	ft_init_data(t_data *data)
 	data->size_line = data->resolution_x * 4;
 	data->endian = 0;
 
+
+
+	data->forward = 0;
+	data->backward = 0;
+	data->right = 0;
+	data->left = 0;
+	data->rotate_right = 0;
+	data->rotate_left = 0;
+
+
 	data->ray_data.orientation = -1;
+
+
+
+
 }
 
 void	ft_init_raycasing_data(t_data *d)

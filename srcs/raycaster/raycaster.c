@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 18:33:46 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/19 01:13:23 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/19 15:34:15 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ void	ft_fill_column(t_data *d, int j, double height)
 	int		begin_wall;
 	int		end_wall;
 
+
+	//verif taille max
+	if (height > (double)d->resolution_y)
+		height = (double)d->ray_data.resolution_y;
 	begin_wall = (d->resolution_y - height) / 2;
 	end_wall = begin_wall + height;
 
@@ -27,38 +31,41 @@ void	ft_fill_column(t_data *d, int j, double height)
 	while (i < d->resolution_y)
 	{
 		pos = j * 4 + ((d->size_line) * i);
-
 		if (i < begin_wall)
 		{
-			d->img_data[pos] = 100;
-			d->img_data[pos + 1] = 100;
-			d->img_data[pos + 2] = 100;
+			d->img_data[pos] = (char)100;
+			d->img_data[pos + 1] = (char)100;
+			d->img_data[pos + 2] = (char)100;
 		}
 		else if (i > begin_wall && i < end_wall)
 		{
-			d->img_data[pos] = 255;
-			d->img_data[pos + 1] = 255;
-			d->img_data[pos + 2] = 255;
+			d->img_data[pos] = (char)255;
+			d->img_data[pos + 1] = (char)255;
+			d->img_data[pos + 2] = (char)255;
 		}
 		else
 		{
-			d->img_data[pos] = 100;
-			d->img_data[pos + 1] = 100;
-			d->img_data[pos + 2] = 100;
+			d->img_data[pos] = (char)100;
+			d->img_data[pos + 1] = (char)100;
+			d->img_data[pos + 2] = (char)100;
 		}
 
 		/*
 		if (i < begin_wall)
 			d->img_data[pos] = (char)d->color_ceiling;
 		else if (i >= begin_wall && i <= end_wall)
-			d->img_data[pos] = (char)16777215;
+		{
+			d->img_data[pos] = (char)255;
+			d->img_data[pos + 1] = (char)255;
+			d->img_data[pos + 2] = (char)255;
+		}
 		else
 			d->img_data[pos] = (char)d->color_floor;
 		*/
 		i++;
 	}
 
-	//mlx_destroy_image()
+	//mlx_destroy_image(d->mlx, d->mlx_img);
 	mlx_put_image_to_window(d->mlx, d->mlx_win, d->mlx_img, 0, 0);
 }
 
@@ -68,6 +75,8 @@ double	ft_correct_fish_eye(double dist, double angle)
 	double	ret;
 
 	ret = dist;
+	//ret = abs(dist * cos(ft_conv_in_rad(angle)));
+
 	if ((angle > 0 && angle < 45))
 		ret = dist * cos(ft_conv_in_rad(angle));
 	else if ((angle > 45 && angle < 90))
@@ -98,7 +107,7 @@ double	ft_new_angle(t_data *d, double angle)
 	return (ret);
 }
 
-void	ft_raycaster(t_data *d)
+int	ft_raycaster(t_data *d)
 {
 	int		i;
 	double	angle;
@@ -119,6 +128,38 @@ void	ft_raycaster(t_data *d)
 	//int i_spawn_x = d->ray_data.pos_x / 48;	// int -> tronc
 	//int i_spawn_y = d->ray_data.pos_y / 48;	// int -> tronc
 	//printf("spawner[%d][%d] = %c\n\n\n", i_spawn_y, i_spawn_x, d->map.tab[i_spawn_y][i_spawn_x]);
+
+
+
+	if (d->forward)
+	{
+		d->ray_data.pos_x -= (cos(ft_conv_in_rad(d->ray_data.orientation)) * SPEED);
+		d->ray_data.pos_y -= (sin(ft_conv_in_rad(d->ray_data.orientation)) * SPEED);
+	}
+	if (d->backward)
+	{
+		d->ray_data.pos_x += (cos(ft_conv_in_rad(d->ray_data.orientation)) * SPEED);
+		d->ray_data.pos_y += (sin(ft_conv_in_rad(d->ray_data.orientation)) * SPEED);
+	}
+	if (d->right)
+	{
+		d->ray_data.orientation += 90;
+		d->ray_data.pos_x -= (cos(ft_conv_in_rad(d->ray_data.orientation)) * SPEED);
+		d->ray_data.pos_y -= (sin(ft_conv_in_rad(d->ray_data.orientation)) * SPEED);
+		d->ray_data.orientation -= 90;
+	}
+	if (d->left)
+	{
+		d->ray_data.orientation -= 90;
+		d->ray_data.pos_x -= (cos(ft_conv_in_rad(d->ray_data.orientation)) * SPEED);
+		d->ray_data.pos_y -= (sin(ft_conv_in_rad(d->ray_data.orientation)) * SPEED);
+		d->ray_data.orientation += 90;
+	}
+	if (d->rotate_right)
+		d->ray_data.orientation += 10;
+	if (d->rotate_left)
+		d->ray_data.orientation -= 10;
+
 
 	while (i < d->resolution_x)
 	{
@@ -148,6 +189,7 @@ void	ft_raycaster(t_data *d)
 		angle = ft_new_angle(d, angle);
 		i++;
 	}
+	return (0);
 }
 
 

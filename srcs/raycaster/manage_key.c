@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 18:34:26 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/19 00:39:18 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/19 16:32:26 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,42 +16,34 @@ int	manage_keys(int key, t_data *data)
 {
 	if (key == 65307 || key == 53)
 		ft_exit_game(data);
+	return (0);
+}
 
-	printf("key : %d\n", key);
-	
+int	ft_press_key(int key, t_data *data)
+{
+	if (key == 13)
+		data->forward = 1;
+	if (key == 1)
+		data->backward = 1;
+	if (key == 2)
+		data->right = 1;
+	if (key == 0)
+		data->left = 1;
+	if (key == 123)
+		data->rotate_right = 1;
+	if (key == 124)
+		data->rotate_left = 1;
+	return (0);
+}
 
-	if (key == 'z')
-	{
-		data->ray_data.pos_x -= (cos(ft_conv_in_rad(data->ray_data.orientation)) * SPEED);
-		data->ray_data.pos_y -= (sin(ft_conv_in_rad(data->ray_data.orientation)) * SPEED);
-	}
-	else if (key == 's')
-	{
-		data->ray_data.pos_x += (cos(ft_conv_in_rad(data->ray_data.orientation)) * SPEED);
-		data->ray_data.pos_y += (sin(ft_conv_in_rad(data->ray_data.orientation)) * SPEED);
-	}
-	else if (key == 'd')
-	{
-		data->ray_data.orientation += 90;
-		data->ray_data.pos_x -= (cos(ft_conv_in_rad(data->ray_data.orientation)) * SPEED);
-		data->ray_data.pos_y -= (sin(ft_conv_in_rad(data->ray_data.orientation)) * SPEED);
-		data->ray_data.orientation -= 90;
-	}
-	else if (key == 'q')
-	{
-		data->ray_data.orientation -= 90;
-		data->ray_data.pos_x -= (cos(ft_conv_in_rad(data->ray_data.orientation)) * SPEED);
-		data->ray_data.pos_y -= (sin(ft_conv_in_rad(data->ray_data.orientation)) * SPEED);
-		data->ray_data.orientation += 90;
-	}
-	else if (key == 'a')
-		data->ray_data.orientation += 10;
-	else if (key == 'e')
-		data->ray_data.orientation -= 10;
-
-
-	ft_raycaster(data);
-
-
+int	ft_release_key(int key, t_data *data)
+{
+	(void)key;
+	data->forward = 0;
+	data->backward = 0;
+	data->right = 0;
+	data->left = 0;
+	data->rotate_right = 0;
+	data->rotate_left = 0;
 	return (0);
 }
