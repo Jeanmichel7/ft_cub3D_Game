@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
+/*   By: jrasser <jrasser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 13:21:13 by ydumaine          #+#    #+#             */
-/*   Updated: 2022/07/16 23:51:18 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/21 01:58:56 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,22 @@ int	ft_check_all_caract(t_data *data)
 		printf("Error\n");
 	if (data->is_map_started == 0)
 		printf("Missing map\n");
-	if (data->texture_N == NULL)
+	if (data->texture[0].path == NULL)
 		printf("Missing North texture\n");
-	if (data->texture_S == NULL)
+	if (data->texture[1].path == NULL)
 		printf("Missing South texture\n");
-	if (data->texture_E == NULL)
+	if (data->texture[2].path == NULL)
 		printf("Missing East texture\n");
-	if (data->texture_W == NULL)
+	if (data->texture[3].path == NULL)
 		printf("Missing West texture\n");
-	if (data->color_ceiling == -1)
+	if (data->ceiling == -1)
 		printf("Missing ceil color\n");
-	if (data->color_floor == -1)
+	if (data->floor == -1)
 		printf("Missing floor color\n");
 	if (ft_check_miss_caract(data))
 		return (1);
+	printf("Test Texture	\u2705 \n");
+	printf("Test Color 	\u2705 \n\n");
 	return (0);
 }
 

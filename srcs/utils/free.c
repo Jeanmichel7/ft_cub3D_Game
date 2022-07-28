@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:51:21 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/16 23:53:44 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/21 17:21:49 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void	ft_close_and_free(t_data *data)
 
 int	ft_free_texture(t_data *data)
 {
-	if (data->texture_N != NULL)
-		free(data->texture_N);
-	if (data->texture_S != NULL)
-		free(data->texture_S);
-	if (data->texture_W != NULL)
-		free(data->texture_W);
-	if (data->texture_E != NULL)
-		free(data->texture_E);
+	int	i;
+
+	i = 0;
+	while (i < data->textures_nb)
+	{
+		free(data->texture[i].path);
+		i++;
+	}
 	return (0);
 }
 

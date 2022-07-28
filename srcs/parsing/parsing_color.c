@@ -87,9 +87,9 @@ void	ft_sub_sub_fill_color(t_data *data, char *str1, char *str2, char *line)
 	tab_color = ft_split(line_data, ',');
 	tab_color = ft_trim_tab(tab_color);
 	if (str1[0] == 'F')
-		ft_parse_color(&(data->color_floor), tab_color);
+		ft_parse_color(&(data->floor), tab_color);
 	else if (str1[0] == 'C')
-		ft_parse_color(&(data->color_ceiling), tab_color);
+		ft_parse_color(&(data->ceiling), tab_color);
 	ft_free_tab(tab_color);
 }
 

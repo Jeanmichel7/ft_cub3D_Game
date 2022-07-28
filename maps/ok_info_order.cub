@@ -1,9 +1,9 @@
 F 65,103,64
-NO ./assets/wall_fantasy.xpm
-EA ./assets/wall_fantasy4.xpm
-SO ./assets/wall_fantasy2.xpm
+NO ./texture/brick_256.xpm
+SO ./texture/rock_256.xpm
+EA ./texture/rock_256.xpm
 C 2,11,83
-WE ./assets/wall_fantasy3.xpm
+WE ./texture/brick_256.xpm
 111111111111
 10000S000001
 100000000001

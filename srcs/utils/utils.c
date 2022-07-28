@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 18:02:29 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/17 20:41:22 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/28 15:06:25 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_print_map(t_map_data *data)
 		j = -1;
 		while (data->map && data->map[i] && data->map[i][++j])
 		{
-			if (data->posX == j && data->posY == i)
+			if (data->pos_x == j && data->pos_y == i)
 			{
 				temp_i = i;
 				temp_j = j;
@@ -93,7 +93,8 @@ void	ft_printmap(t_data *data, char **map)
 		j = -1;
 		while (map && map[i] && map[i][++j])
 		{
-			if (data->player_spawn_x == j && data->player_spawn_y == i)
+			if (data->player_spawn_pos[0] == j && \
+			data->player_spawn_pos[1] == i)
 			{
 				temp_i = i;
 				temp_j = j;
@@ -105,39 +106,4 @@ void	ft_printmap(t_data *data, char **map)
 		printf("\n");
 	}
 	map[temp_i][temp_j] = temp;
-	printf("\n\n");
-}
-
-void	ft_print_ray_data(t_data *d)
-{
-	printf("dist ecran projec		: %f\n", d->ray_data.dist_cam_ecran);
-	printf("angle entre 2 rayons	: %f\n", d->ray_data.angle_between_radius);
-	printf("orientation 			: %f\n", d->ray_data.orientation);
-	
-	
-	
-	
-	
-	printf("\n\n");
-}
-
-void	ft_printdata(t_data *data)
-{
-	printf("\nDATA\n");
-	if (data->texture_N != NULL)
-		printf("texture_N : %s \n", data->texture_N);
-	if (data->texture_S != NULL)
-		printf("texture_S : %s \n", data->texture_S);
-	if (data->texture_W != NULL)
-		printf("texture_W : %s \n", data->texture_W);
-	if (data->texture_E != NULL)
-		printf("texture_E : %s \n", data->texture_E);
-	printf("floor : %d \n", data->color_floor);
-	printf("ceiling : %d \n", data->color_ceiling);
-	printf("direction spawn player : %c \n", data->player_spawn_dir);
-	printf("pos x player : %d \n", data->player_spawn_x);
-	printf("pos y player : %d \n", data->player_spawn_y);
-	printf("\n\nMAP\n");
-	ft_printmap(data, data->map.tab);
-	ft_print_ray_data(data);
 }

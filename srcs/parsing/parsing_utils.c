@@ -6,7 +6,7 @@
 /*   By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 23:10:38 by jrasser           #+#    #+#             */
-/*   Updated: 2022/07/16 23:37:24 by jrasser          ###   ########.fr       */
+/*   Updated: 2022/07/21 16:54:21 by jrasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_check_miss_caract(t_data *data)
 {
-	if (data->texture_N == NULL || data->texture_S == NULL
-		|| data->texture_W == NULL || data->texture_E == NULL
-		|| data->color_floor == -1 || data->color_ceiling == -1
+	if (data->texture[0].path == NULL || data->texture[1].path == NULL
+		|| data->texture[2].path == NULL || data->texture[3].path == NULL
+		|| data->floor == -1 || data->ceiling == -1
 		|| data->is_map_started == 0)
 		return (1);
 	return (0);

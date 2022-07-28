@@ -1,15 +1,15 @@
-
-
-NO        ./assets/blue.xpm
+NO          ./texture/brick_256.xpm
 
 
 
 
 
-SO ./assets/red.xpm       
-WE ./assets/yellow.xpm
-		        
-EA        ./assets/green.xpm          
+SO    ./texture/rock_256.xpm
+WE            ./texture/brick_256.xpm
+
+EA          ./texture/rock_256.xpm
+
+
 
 F  220,100,0 	
 C 225,30,0    	

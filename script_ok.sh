@@ -1,5 +1,5 @@
-./cub3d maps/ok_info_order.cub
 ./cub3d maps/ok_color_space.cub
+./cub3d maps/ok_info_order.cub
 ./cub3d maps/ok_map.cub
 ./cub3d maps/ok_map1.cub
 ./cub3d maps/ok_map2.cub
@@ -14,3 +14,4 @@
 ./cub3d maps/ok_simple.cub
 ./cub3d maps/ok_spaces_in_element.cub
 ./cub3d maps/ok_strange.cub
+./cub3d maps/ok_map_no_move.cub

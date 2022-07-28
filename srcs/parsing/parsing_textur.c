@@ -27,16 +27,16 @@ void	ft_sub_fill_texture(t_data *data, char *str1, char *str2, char *line)
 	ft_check_location_texture(data, str1);
 	if (str1[0] == 'N' && (str1[1] == '\0' \
 	|| (str1[1] == 'O' && str1[2] == '\0')))
-		ft_sub_fill_caract(&(data->texture_N), str2);
+		ft_sub_fill_caract(&(data->texture[0].path), str2);
 	else if (str1[0] == 'S' && (str1[1] == '\0' \
 	|| (str1[1] == 'O' && str1[2] == '\0')))
-		ft_sub_fill_caract(&(data->texture_S), str2);
-	else if (str1[0] == 'W' && (str1[1] == '\0' \
-	|| (str1[1] == 'E' && str1[2] == '\0')))
-		ft_sub_fill_caract(&(data->texture_W), str2);
+		ft_sub_fill_caract(&(data->texture[1].path), str2);
 	else if (str1[0] == 'E' && (str1[1] == '\0' \
 	|| (str1[1] == 'A' && str1[2] == '\0')))
-		ft_sub_fill_caract(&(data->texture_E), str2);
+		ft_sub_fill_caract(&(data->texture[2].path), str2);
+	else if (str1[0] == 'W' && (str1[1] == '\0' \
+	|| (str1[1] == 'E' && str1[2] == '\0')))
+		ft_sub_fill_caract(&(data->texture[3].path), str2);
 	else if (ft_map_begin(line) && data->is_map_started == 0)
 	{
 		data->is_map_started = 1;

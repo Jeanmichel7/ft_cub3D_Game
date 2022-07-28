@@ -12,26 +12,14 @@
 
 #include "../../include/cub3d.h"
 
-void	ft_set_orientation(t_data *d)
-{
-	if (d->player_spawn_dir == 'N')
-		d->ray_data.orientation = 90;
-	else if (d->player_spawn_dir == 'W')
-		d->ray_data.orientation = 180; 
-	else if (d->player_spawn_dir == 'S')
-		d->ray_data.orientation = 270; 
-	else if (d->player_spawn_dir == 'E')
-		d->ray_data.orientation = 0; 
-}
-
 void	ft_sub_replace_space(t_data *data, int i, int j)
 {
-	if (data->player_spawn_x == -1)
+	if (data->player_spawn_pos[0] == 0)
 	{
-		data->player_spawn_x = j;
-		data->player_spawn_y = i;
 		data->player_spawn_dir = data->map.tab[i][j];
-		ft_set_orientation(data);
+		data->player_spawn_pos[0] = j;
+		data->player_spawn_pos[1] = i;
+		data->map.tab[i][j] = '0';
 	}
 	else
 	{

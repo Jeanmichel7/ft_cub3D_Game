@@ -6,7 +6,7 @@
 #    By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/01 20:15:09 by jrasser           #+#    #+#              #
-#    Updated: 2022/07/13 16:55:35 by jrasser          ###   ########.fr        #
+#    Updated: 2022/07/19 19:37:00 by jrasser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,12 @@ CC		= gcc
 
 RM		= @rm -f
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g
 
 LDFLAGS	= -I./includes/
 
 .c.o:		
-			@${CC} ${CFLAGS} -c ${LDFLAGS} $< -o ${<:.c=.o} -g -fsanitize=address
+			@${CC} ${CFLAGS} -c ${LDFLAGS} $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
 			@ar rc ${NAME} ${OBJS}
