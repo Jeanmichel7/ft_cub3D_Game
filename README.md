@@ -1,5 +1,7 @@
 # Cub3D - 42 School Project
 
+<img src="https://github.com/Jeanmichel7/ft_cub3D_Game/blob/image/Screenshot%202023-09-01%20223140.png" alt="Cub3D" width="400"/>
+
 ## 📋 Résumé
 
 Cub3D est un projet de ray-casting qui s'inspire du légendaire jeu vidéo Wolfenstein 3D. Ce projet est conçu pour vous permettre d'explorer la technique du ray-casting. Il vous offre également une petite fenêtre pour aborder le monde complexe de la programmation graphique.
@@ -62,3 +64,14 @@ Flèche gauche pour tourner à gauche
 Flèche droite pour tourner à droite
 
 ## Gallery
+
+<table>
+  <tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/Jeanmichel7/ft_cub3D_Game/image/Screenshot%202023-09-01%20222732.png" alt="Image 1" width="800"/>
+    </td>
+    <td>
+      <img src="https://raw.githubusercontent.com/Jeanmichel7/ft_cub3D_Game/image/Screenshot%202023-09-01%20223049.png" alt="Image 2" width="1200"/>
+    </td>
+  </tr>
+</table>
