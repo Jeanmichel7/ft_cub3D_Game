@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jrasser <jrasser@42.fr>                    +#+  +:+       +#+         #
+#    By: jrasser <jrasser@student.42mulhouse.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/17 05:26:46 by jrasser           #+#    #+#              #
-#    Updated: 2022/07/21 20:27:52 by jrasser          ###   ########.fr        #
+#    Updated: 2023/09/01 21:59:54 by jrasser          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,8 +44,8 @@ $(NAME): 	$(OBJS)
 ifeq ($(OS),Darwin)
 				$(LIBMLXMAC)
 endif
-			@$(MAKE) --no-print-directory -C ./libft
-			@${CC} -o ${NAME} ${OBJS} -L./libft -lft $(LDFLAGS) ${DEBEUG}
+			$(MAKE) --no-print-directory -C ./libft
+			${CC} -o ${NAME} ${OBJS} -L./libft -lft $(LDFLAGS) ${DEBEUG}
 
 $(NAME_BONUS): 	$(OBJS_BONUS)
 ifeq ($(OS),Darwin)
